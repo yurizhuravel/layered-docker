@@ -1,0 +1,24 @@
+#
+# Mill_Docker Dockerfile
+#
+
+# Pull base image
+FROM openjdk:8-alpine
+
+# Env variables
+ENV MILL_VERSION 0.9.5
+
+# Define working directory
+WORKDIR /builder
+
+RUN apk add --update --no-cache \
+  curl \
+  docker \
+  bash \
+  rsync \
+  && rm -rf /var/cache/apk/* 
+
+# Install mill
+RUN \
+  curl -L -o /usr/local/bin/mill https://github.com/lihaoyi/mill/releases/download/$MILL_VERSION/$MILL_VERSION && \
+  chmod +x /usr/local/bin/mill
