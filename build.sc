@@ -7,18 +7,6 @@ object sample extends mill.Module {
 
   val serviceDirectory  = os.pwd / "service"
 
-  // def testBuild: Target[Unit] = T {
-  //   createTarget()
-  //   copyFiles()
-  // }
-
-  // def createTarget(): Unit =
-  //     os.proc(
-  //         "bash",
-  //         "-c",
-  //         "echo \"foo=bar\" > service/target-files/foo.txt"
-  //       ).call(stdin = os.Inherit, stdout = os.Inherit, stderr = os.Inherit)
-
   def build: Target[Unit] =
     T.command {
         os.proc(
